@@ -8,8 +8,8 @@ var delete_button;
 var buttons;
 var inputs;
 
-var ordered_list;
-var current_list_item;
+
+
 var list_items;
 
 
@@ -207,8 +207,11 @@ document.addEventListener('DOMContentLoaded', function(){
         input_text = current_input.value;    
     
         if(input_text.match(/^[0-9]+$/) && list_items.length > 0){
+           
            list_items[input_text - 1].remove();
+           
            current_input.value = null;
+           
         }
 
 

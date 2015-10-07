@@ -207,6 +207,8 @@ document.addEventListener('DOMContentLoaded', function(){
         
             if (input_text == list_items[i].textContent){
                 list_items[i].remove();
+                
+                i = i - 1;
             }
         }
         

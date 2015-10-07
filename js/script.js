@@ -48,7 +48,7 @@ function attach_element(element_name, element_id){
 
 
 function add_listener(element_name, type_of_event, listener_function){
-    element_name.add_listener(type_of_event, listener_function);
+    element_name.addEventListener(type_of_event, listener_function);
 }
 
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     update_list_elements();
     
-    add_listener(document.getElementById('create'),'click',function(){
+    add_listener(create_button,'click',function(){
 
         var button_name = new String;
         var input_name = '_box';
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function(){
             current_element.textContent = random_color();
             current_element.style.backgroundColor = current_element.textContent;
             
-            add_listener(this,'dblclick',function(){
-                log(this);
+            add_listener(current_element,'dblclick',function(){
+            //   log(this);
                 this.remove();
             });
                 
@@ -98,9 +98,6 @@ document.addEventListener('DOMContentLoaded', function(){
             
             current_element.textContent = document.getElementById(input_name).value;
             current_element.style.backgroundColor = current_element.textContent;
-            current_element.addEventListener('dblclick',function(){
-                this.remove();
-            });
             
             document.getElementById(input_name).value = null;
         }
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     read_button = document.getElementById('read');
 
-    add_listener(document.getElementById('read'),'click',function(){
+    add_listener(read_button,'click',function(){
 
         var button_name = new String;
         var input_name = '_box';
@@ -149,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     update_button = document.getElementById('update');
     
-    add_listener(document.getElementById('update'),'click',function(){
+    add_listener(update_button,'click',function(){
 
         var button_name = new String;
         var input_name = '_box';
@@ -192,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     delete_button = document.getElementById('delete');
 
-    add_listener(document.getElementById('delete'),'click',function(){
+    add_listener(delete_button,'click',function(){
 
         var button_name = new String;
         var input_name = '_box';
@@ -205,13 +202,19 @@ document.addEventListener('DOMContentLoaded', function(){
         input_name = button_name+input_name;
         current_input = document.getElementById(input_name);
         input_text = current_input.value;    
-    
+            
         if(input_text.match(/^[0-9]+$/) && list_items.length > 0){
-           
+        //   log(list_items[input_text - 1]);
            list_items[input_text - 1].remove();
-           
+          
            current_input.value = null;
-           
+           log(list_items.length);
+        }
+        for(var i = 0; i < list_items.length; i++){
+        
+            if (input_text == list_items[i].textContent){
+                list_items[i].remove();
+            }
         }
 
 

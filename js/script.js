@@ -203,18 +203,19 @@ document.addEventListener('DOMContentLoaded', function(){
         current_input = document.getElementById(input_name);
         input_text = current_input.value;    
             
-        if(input_text.match(/^[0-9]+$/) && list_items.length > 0){
-        //   log(list_items[input_text - 1]);
-           list_items[input_text - 1].remove();
-          
-           current_input.value = null;
-           log(list_items.length);
-        }
         for(var i = 0; i < list_items.length; i++){
         
             if (input_text == list_items[i].textContent){
                 list_items[i].remove();
             }
+        }
+        
+        if(input_text.match(/^[0-9]+$/) && list_items.length > 0){
+        //   log(list_items[input_text - 1]);
+           list_items[input_text - 1].remove();
+          
+           current_input.value = null;
+        //   log(list_items.length);
         }
 
 
